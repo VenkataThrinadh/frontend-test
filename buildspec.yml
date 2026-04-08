@@ -16,7 +16,7 @@ phases:
       - aws s3 sync build/ s3://www.crmtesting.work.gd --delete
 
       - echo Clearing CloudFront cache
-      - aws cloudfront create-invalidation --distribution-id ECWF4NPB5JUD --paths "/*"
+      - aws cloudfront create-invalidation --distribution-id ECWF4NPB5JUID --paths "/*"
 
 artifacts:
   files:
