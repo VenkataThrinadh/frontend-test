@@ -2,13 +2,26 @@ version: 0.2
 
 phases:
   install:
-    commands:
-      - npm install
+    runtime-versions:
+      nodejs: 18
+
   build:
     commands:
+      - echo Installing dependencies
+      - npm install
+      - echo Building app
       - npm run build
+
+  post_build:
+    commands:
+      - echo Uploading to S3
+      - aws s3 sync build/ s3://www.crmtesting.work.gd --delete
+
+      - echo Invalidating CloudFront cache
+      - aws cloudfront create-invalidation \
+        --distribution-id ECWF4NPB5JUD \
+        --paths "/*"
 
 artifacts:
   files:
     - '**/*'
-  base-directory: build
