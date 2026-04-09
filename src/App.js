@@ -61,7 +61,7 @@ function App() {
   };
   return (
     <div style={{ padding: '20px' }}>
-      <h1>first CI/CD Customer List</h1>
+      <h1>thrusday testing cicd</h1>
 
       {/* Form */}
       <input
